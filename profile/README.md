@@ -60,9 +60,9 @@ The features for pretraining and downstream evaluation are availble here: https:
 | Kingfisher | 22.37 | — | — |
 | [**Baseline**](https://eval.ai/web/challenges/challenge-page/1903/leaderboard/4491) | | | |
 | NS | 19.32 | 11.73 | :x:
-| NS | 22.80 | 12.73 | :heavy_check_mark:
+| NS | 22.80 | 12.73 | :white_check_mark:
 | VL | 18.19 | 11.82 | :x:
-| VL | 34.20 | 18.82 | :heavy_check_mark:
+| VL | 34.20 | 18.82 | :white_check_mark:
 | **EMMA:** | | | |
 | EMMA-modular | 33.76 | 18.91 | :x:
 | EMMA-modular | 33.95 | 19.05 | CR
