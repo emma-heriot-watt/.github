@@ -66,7 +66,7 @@ The features for pretraining and downstream evaluation are availble here: https:
 | **EMMA:** | | | |
 | EMMA-modular | 33.76 | 18.91 | :x:
 | EMMA-modular | 33.95 | 19.05 | CR
-| EMMA-modular | 35.16 | 18.92 | :check_mark:
+| EMMA-modular | 35.16 | 18.92 | :white_check_mark:
 | EMMA-unified | 33.26 | 18.79 | :x:
 | EMMA-unified | 33.59 | 18.89 | CR
-| EMMA-unified | **36.81** | **18.69** | :heavy_check_mark:
+| EMMA-unified | **36.81** | **18.69** | :white_check_mark:
