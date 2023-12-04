@@ -29,13 +29,13 @@ The offline inference contains the instrastructure to run the evaluation on the 
 We provide pretrained / finetuned checkpoints, dataset features, and dbs required to reproduce our setup. All the material is available on Huggin Face! :hugs:
 
 #### Checkpoints
-The checkpoints can be accessed from this link: https://huggingface.co/gpantaz/emma_models
+The checkpoints can be accessed from this link: https://huggingface.co/emma-heriot-watt/emma_models
 
 #### Dataset Features
-The features for pretraining and downstream evaluation are availble here: https://huggingface.co/gpantaz/emma_features
+The features for pretraining and downstream evaluation are availble here: https://huggingface.co/emma-heriot-watt/emma_features
 
 #### Dataset Dbs
-The features for pretraining and downstream evaluation are availble here: https://huggingface.co/gpantaz/emma_datasets
+The features for pretraining and downstream evaluation are availble here: https://huggingface.co/emma-heriot-watt/emma_datasets
 
 
 ### Results
@@ -43,8 +43,30 @@ The features for pretraining and downstream evaluation are availble here: https:
 #### Dowstream Image-Based Tasks
 
 | Model | COCO Captioning | VQAv2 | RefCOCOg | NLVR2  |
-| :---: |       :---:     | :---: | :---:    | :---: |
-| EMMA  | B|
+| :--- |       :---:     | :---: | :---:    | :---: |
+| VL-T5 | 116.5 | 70.3 | 71.3 | **73.6**
+| VL-BART | 116.6 | 71.3 | 22.4 | 70.3 
+| UniTAB | 119.8 |  71.0 | **84.5** | —
+| <span style="color:gray">OFA-base</span> | <span style="color:gray">138.2</span> | <span style="color:gray">78.1</span> | <span style="color:gray">82.3</span> | —
+| **EMMA**  | **122.3** | **73.2** | 80.3 | 70.3
 
 
 #### Dialog Guided Task Completion
+| Model | MSR (&#8593;) | NRA (&#8595;) | QA | 
+| :--- |       :---:     | :---: | :---:
+| [**LeaderBoard**](https://eval.ai/web/challenges/challenge-page/1903/leaderboard/4491) | | | |
+| GauchoAI | 36.47 | — | — |
+| SEAGULL | 30.98 | — | — | 
+| Kingfisher | 22.37 | — | — |
+| [**Baseline**](https://eval.ai/web/challenges/challenge-page/1903/leaderboard/4491) | | | |
+| NS | 19.32 | 11.73 | :x:
+| NS | 22.80 | 12.73 | :heavy_check_mark:
+| VL | 18.19 | 11.82 | :x:
+| VL | 34.20 | 18.82 | :heavy_check_mark:
+| **EMMA:** | | | |
+| EMMA-modular | 33.76 | 18.91 | :x:
+| EMMA-modular | 33.95 | 19.05 | CR
+| EMMA-modular | 35.16 | 18.92 | :heavy_check_mark:
+| EMMA-unified | 33.26 | 18.79 | :x:
+| EMMA-unified | 33.59 | 18.89 | CR
+| EMMA-unified | **36.81** | **18.69** | :heavy_check_mark:
