@@ -8,7 +8,7 @@ Hello, thanks for your interest in our work. We're the [EMMA team](https://sites
 
 ### Organisation Structure
 
-#### How do all the repositories connect togethet?
+#### How do all the repositories connect together?
 
 There are multiple repos which can make it confusing up front, so here’s how all the pieces connect on a high-level. 
 
@@ -23,29 +23,23 @@ There are multiple repos which can make it confusing up front, so here’s how a
 
 We have multiple image-based datasets where every example from the raw data can be turned into a single example consisting of an image and its annotations in its metadata. As we mix every dataset together for training, all the data must be in a single structure for easy training. Additionally, as each dataset contributes different tasks, many have introduced new tasks and annotations on the same images as other datasets. For example, while COCO provides image captions, VisualGenome provides scene graphs and also possible region descriptions. 
 
+The purpose of datasets is to convert every dataset from its raw form (as it was released) into a single structure, to merge multiple datasets together and remove duplicates, to store all this information in a lightweight format that allows quick querying, and to do it as fast as possible. We easily merge all annotations from multiple datasets without duplicating images, validate the fields using Pydantic, we store these in an incredibly simple SQLite table called a “DatasetDb” or “Db”. Importantly, datasets only handles the metadata for a given image. So, everything except for the actual image, but it keeps a reference to the original image. 
 
-(WIP)
+The other part of providing input to the model involves extracting visual features for every single image. As mentioned in the paper, we use a feature extractor that is trained separately. To train the model efficiently, we want to extract the visual features for every single image up front. We use Perception to extract all visual features using VinVL for every single image for every single dataset. 
+
+Policy holds the main model of EMMA. Using the Dataset Dbs and the extracted features, we train the models to perform the various tasks. Policy also contains the evaluation for each of the image-based tasks. 
+
+The Experience Hub contains all logic for integrating the models together for inference: taking in a request from a user, processing the observation with Perception, predicting the next action with Policy, and returning the action to the environment.
+
+The Arena Evaluation is how we send requests and observations from the Alexa Arena to the Experience Hub, and return actions to perform in the environment back to the Alexa Arena. 
 
 
 
-#### [Policy](https://github.com/emma-heriot-watt/policy)
-Policy is the main repo that is used to pretrain and fine tune EMMA as well as to evaluate a checkpoint on all image-based tasks.
 
-#### [Datasets](https://github.com/emma-heriot-watt/datasets)
-Datasets is where we have implemented all the components required to create a db for pretraining, as well as all downstream tasks. These dbs are required by the policy along with the features for each task.
-
-#### [Perception](https://github.com/emma-heriot-watt/perception)
-Perception is responsible for extracting the features for images used by policy. The repo can be used as a standalone to extract features before running things on policy, or used as an api to perform offline evaluation.
-
-#### [Experience-hub](https://github.com/emma-heriot-watt/experience-hub)
-Experience-hub is the repo associated with setting up all the pipelines and controllers required for the offline inference. Experience hub communicates with perception to extract features only when necessary, and queries policy to perform actions on the environment.
-
-#### [Offline-inference](https://github.com/emma-heriot-watt/offline-inference)
-The offline inference contains the instrastructure to run the evaluation on the Alexa Arena and report metrics using Weights and Biases
 
 
 ### Download stuff
-We provide pretrained / finetuned checkpoints, dataset features, and dbs required to reproduce our setup. All the material is available on Huggin Face! :hugs:
+We provide pretrained/finetuned checkpoints, dataset features, and dbs required to reproduce our setup. All the material is available on Hugging Face! :hugs:
 
 #### Checkpoints
 The checkpoints can be accessed from this link: https://huggingface.co/emma-heriot-watt/emma_models
