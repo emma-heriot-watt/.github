@@ -1,25 +1,26 @@
-## Embodied MultiModal Agent (EMMA)
+# Embodied MultiModal Agent (EMMA)
 
 Hello, thanks for your interest in our work. We're the [EMMA team](https://sites.google.com/site/hwinteractionlab/home/amazon-simbot-challenge), the Heriot-Watt University team that was one of the [finalists](https://www.amazon.science/alexa-prize/simbot-challenge/one) in the [Amazon Simbot Challenge](https://www.amazon.science/alexa-prize/simbot-challenge), a university competition organised by Amazon to advance the state-of-the-art in Conversational Embodied AI. We created this Github organisation to organise all the code and artefacts that we are releasing to the public as part of our effort to create the first V+L model for Embodied AI tasks.
 
 ## News
+
 * [4/12] :mega: We have released the [checkpoints](https://huggingface.co/emma-heriot-watt/models) on Hugging Face! :hugs:
 * [1/12] :mega: We're going to be at [EMNLP 2023](https://2023.emnlp.org/) to present the paper [Multitask Multimodal Prompted Training for Interactive Embodied Task Completion](https://arxiv.org/abs/2311.04067). We'll release everything soon! Follow the organisation for updates as we release things!
 
-### Organisation Structure
+## Organisation Structure
 
-#### How do all the repositories connect together?
+### How do all the repositories connect together?
 
 There are multiple repos which can make it confusing up front, so here’s how all the pieces connect on a high-level. 
 
 - [Datasets](https://github.com/emma-heriot-watt/datasets) efficiently merges all annotations from all the datasets without duplicating images. 
 - [Perception](https://github.com/emma-heriot-watt/perception) extracts visual features from every single image. 
 - [Policy](https://github.com/emma-heriot-watt/policy) takes each instance and the visual features, creates the pretraining and fine-tuning datasets, and trains the EMMA models. It also evaluates checkpoints on the image-based tasks.
-- [Experience Hub](https://github.com/emma-heriot-watt/experience-hub) brings all the models together for inference; taking a request and an observation and predicting the next action for the environment. 
+- [Experience Hub](https://github.com/emma-heriot-watt/experience-hub) brings all the models together for inference; taking a request and an observation and predicting the next action for the environment.
 - [Arena Evaluation](https://github.com/emma-heriot-watt/offline-inference) sends observations and instructions from the Alexa Arena to the experience Hub, and returns the predicted actions for execution in the environment. 
 
 
-##### Some more details on how it all works. 
+#### Some more details on how it all works. 
 
 We have multiple image-based datasets where every example from the raw data can be turned into a single example consisting of an image and its annotations in its metadata. As we mix every dataset together for training, all the data must be in a single structure for easy training. Additionally, as each dataset contributes different tasks, many have introduced new tasks and annotations on the same images as other datasets. For example, while COCO provides image captions, VisualGenome provides scene graphs and also possible region descriptions. 
 
@@ -38,22 +39,22 @@ The Arena Evaluation is how we send requests and observations from the Alexa Are
 
 
 
-### Download stuff
+## Download stuff
 We provide pretrained/finetuned checkpoints, dataset features, and dbs required to reproduce our setup. All the material is available on Hugging Face! :hugs:
 
-#### Checkpoints
+### Checkpoints
 The checkpoints can be accessed from this link: https://huggingface.co/emma-heriot-watt/emma_models
 
-#### Dataset Features
+### Dataset Features
 The features for pretraining and downstream evaluation are availble here: https://huggingface.co/emma-heriot-watt/emma_features
 
-#### Dataset Dbs
+### Dataset Dbs
 The features for pretraining and downstream evaluation are availble here: https://huggingface.co/emma-heriot-watt/emma_datasets
 
 
-### Results
+## Results
 
-#### Dowstream Image-Based Tasks
+### Dowstream Image-Based Tasks
 
 | Model | COCO Captioning | VQAv2 | RefCOCOg | NLVR2  |
 | :--- |       :---:     | :---: | :---:    | :---: |
@@ -64,7 +65,7 @@ The features for pretraining and downstream evaluation are availble here: https:
 | **EMMA**  | **122.3** | **73.2** | 80.3 | 70.3
 
 
-#### Dialog Guided Task Completion
+### Dialog Guided Task Completion
 | Model | MSR (&#8593;) | NRA (&#8595;) | QA | 
 | :--- |       :---:     | :---: | :---:
 | [**LeaderBoard**](https://eval.ai/web/challenges/challenge-page/1903/leaderboard/4491) | | | |
