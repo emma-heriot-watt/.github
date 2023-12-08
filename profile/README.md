@@ -17,7 +17,7 @@ There are multiple repos which can make it confusing up front, so here’s how a
 - [Perception](https://github.com/emma-heriot-watt/perception) extracts visual features from every single image. 
 - [Policy](https://github.com/emma-heriot-watt/policy) takes each instance and the visual features, creates the pretraining and fine-tuning datasets, and trains the EMMA models. It also evaluates checkpoints on the image-based tasks.
 - [Experience Hub](https://github.com/emma-heriot-watt/experience-hub) brings all the models together for inference; taking a request and an observation and predicting the next action for the environment.
-- [Arena Evaluation](https://github.com/emma-heriot-watt/offline-inference) sends observations and instructions from the Alexa Arena to the experience Hub, and returns the predicted actions for execution in the environment. 
+- [Arena Evaluation](https://github.com/emma-heriot-watt/arena-evaluation) sends observations and instructions from the Alexa Arena to the Experience Hub, and returns the predicted actions for execution in the environment. 
 
 
 #### Some more details on how it all works. 
